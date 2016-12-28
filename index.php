@@ -1,6 +1,6 @@
 <?php
 	require('Router.php');
-	Router::dirStatic("restPHP");
+	//Router::dirStatic("restPHP");
 
 //TEMPLATES
 	Router::get('/', function (){
