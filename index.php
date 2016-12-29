@@ -1,4 +1,5 @@
 <?php
+	header('Access-Control-Allow-Origin: *');
 	require('Router.php');
 	//Router::dirStatic("restPHP");
 
@@ -31,7 +32,7 @@
 	});
 
 
-	Router::put('/user/:nome/:idade/:cod', function($data){
+	Router::put('/user', function($data){
 		echo 'NOVOS DADOS DO USUÁRIO PARA ALTERAÇÃO:';
 		print_r($data);
 	});
@@ -39,3 +40,4 @@
 	Router::delete('/user/:id', function($data){
 		echo 'APAGAR USUÁRIO PELO ID: ' . $data['id'];
 	});
+?>
