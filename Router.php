@@ -41,8 +41,8 @@
 				}
 			}
 			
-			//Quando for PUT, devolver o fluxo de entrada do php
-			if( $_SERVER['REQUEST_METHOD'] == "PUT" )
+			//Quando for PUT e também a rota esperada, devolver o fluxo de entrada do php
+			if( $_SERVER['REQUEST_METHOD'] == "PUT" and $_SERVER ['REQUEST_URI'] == self::$folder.$_url )
 			{
 				parse_str(file_get_contents("php://input"), self::$params);
 				call_user_func($_callback, self::$params);
