@@ -41,8 +41,14 @@
 				}
 			}
 			
-			//Tratamento de url sem parâmetro
-			if(  $_SERVER ['REQUEST_URI'] == self::$folder.$_url )call_user_func($_callback);
+			//Quando for PUT, devolver o fluxo de entrada do php
+			if( $_SERVER['REQUEST_METHOD'] == "PUT" )
+			{
+				parse_str(file_get_contents("php://input"), self::$params);
+				call_user_func($_callback, self::$params);
+			}
+			//Quando a url não possuir parâmetros nem o método ser PUT, mas a rota ser a esperada
+			elseif(  $_SERVER ['REQUEST_URI'] == self::$folder.$_url )call_user_func($_callback);
 		}
 
 		
